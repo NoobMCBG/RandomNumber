@@ -1,0 +1,11 @@
+---
+
+# Message Generate Number
+# Use {line} to make a new Line
+# Use {player} to get name players
+# Use {number} to get number generate
+msg-generate: "§aSuccessfully generated number {number}"
+
+# Mode List(2): form, message
+mode: "message"
+...
