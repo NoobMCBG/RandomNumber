@@ -42,10 +42,10 @@ class RandomNumberCommands extends Command {
     public function execute(CommandSender $sender, string $label, array $args){
     	if($this->main->getConfig()->get("mode") == "form"){
     		if(!$sender instanceof Player){
-                Forms::RandomMenu($sender);
+                $sender->sendMessage("Please use form mode in-game");
                 return true;
     		}
-    		$sender->sendMessage("Please use form mode in-game");
+            Forms::RandomMenu($sender);
     	}else{
     		if(isset($args[0])){
     	        if(isset($args[1])){
