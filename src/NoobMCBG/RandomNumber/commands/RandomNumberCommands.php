@@ -22,15 +22,16 @@ declare(strict_types=1);
 
 namespace NoobMCBG\RandomNumber\commands;
 
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
+use pocketmine\plugin\PluginOwned;
 use NoobMCBG\RandomNumber\RandomNumber;
 use NoobMCBG\RandomNumber\Forms;
 
-class RandomNumberCommands extends Command {
+class RandomNumberCommands extends Command implements PluginOwned {
     
     private RandomNumber $plugin;
 
