@@ -22,7 +22,7 @@ declare(strict_types=1);
 
 namespace NoobMCBG\RandomNumber;
 
-use pocketmine\player\Player;
+use pocketmine\Player;
 use NoobMCBG\RandomNumber\RandomNumber;
 use NoobMCBG\RandomNumber\libs\jojoe77777\FormAPI\CustomForm;
 
