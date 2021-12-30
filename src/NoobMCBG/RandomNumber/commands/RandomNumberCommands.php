@@ -32,13 +32,15 @@ use NoobMCBG\RandomNumber\Forms;
 
 class RandomNumberCommands extends Command {
 
-    public function __construct(RandomNumber $plugin) {
-        $this->plugin = $plugin;
-        parent::__construct("randomnumber", "Generate a random number", \null, ["rb"]);
+    public function __construct(RandomNumber $main) {
+        $this->main = $main;
+        parent::__construct("randomnumber", $main);
+        $this->setAliases(["rb"]);
+        $this->setDescription("Generate a random number");
     }
 
     public function execute(CommandSender $sender, string $label, array $args){
-    	if($this->plugin->getConfig()->get("mode") == "form"){
+    	if($this->main->getConfig()->get("mode") == "form"){
     		if(!$sender instanceof Player){
                 Forms::RandomMenu($sender);
                 return true;
@@ -57,7 +59,7 @@ class RandomNumberCommands extends Command {
                     }
     	    	    $min = (int)$args[0];
                     $max = (int)$args[1];
-                    $sender->sendMessage(str_replace(["{line}", "{player}", "{number}"], ["\n", $sender->getName(), mt_rand($min, $max)], strval($this->plugin->getConfig()->get("msg-generate"))));
+                    $sender->sendMessage(str_replace(["{line}", "{player}", "{number}"], ["\n", $sender->getName(), mt_rand($min, $max)], strval($this->main->getConfig()->get("msg-generate"))));
                 }else{
                 	$sender->sendMessage("§cUsage: §7/randomnumber <min> <max>");
                 }
