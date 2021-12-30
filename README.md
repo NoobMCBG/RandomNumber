@@ -14,7 +14,7 @@
 ## Commands
 
 | **Command** | **Description** | **Aliases** |
-| --- | --- |
+| --- | --- | | --- |
 | **/randomnumber** | **Generate a random number** | **rb** |
   
 <br>
