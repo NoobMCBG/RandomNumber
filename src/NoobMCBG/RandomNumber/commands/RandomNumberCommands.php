@@ -70,4 +70,8 @@ class RandomNumberCommands extends Command {
     	    }
     	}
     }
+    
+    public function getOwningPlugin() : RandomNumber {
+        return $this->plugin;
+    }
 }
