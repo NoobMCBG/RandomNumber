@@ -59,6 +59,9 @@ class RandomNumberCommands extends Command implements PluginOwned {
                         $sender->sendMessage("§cPlease enter the number");
                         return true;
                     }
+                    if($args[1] <= $args[0]){
+                        $sender->sendMessage("§cThe max number cannot be less than $args[0] or equal to $args[0]");
+                    }
     	    	    $min = (int)$args[0];
                     $max = (int)$args[1];
                     $sender->sendMessage(str_replace(["{line}", "{player}", "{number}"], ["\n", $sender->getName(), mt_rand($min, $max)], strval($this->plugin->getConfig()->get("msg-generate"))));
