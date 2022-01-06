@@ -47,7 +47,7 @@ class Forms {
                 $max = (int)$data[2];
                 $player->sendMessage(str_replace(["{line}", "{player}", "{number}"], ["\n", $player->getName(), mt_rand($min, $max)], strval(RandomNumber::getInstance()->getConfig()->get("msg-generate"))));
             }else{
-                $player->sendMessage("§cThe max number cannot be less than $args[0]");
+                $player->sendMessage("§cThe max number cannot be less than $data[1]");
             }
         });
         $form->setTitle("RandomNumber");
