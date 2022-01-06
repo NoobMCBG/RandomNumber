@@ -67,7 +67,7 @@ class RandomNumberCommands extends Command implements PluginOwned {
                 	$sender->sendMessage("§cUsage: §7/randomnumber <min> <max>");
                 }
     	    }else{
-    	    	$sender->sendMessage("§cUsage: §7/randomnumber <min> <max>");
+    	       $sender->sendMessage("§cUsage: §7/randomnumber <min> <max>");
     	    }
     	}
     }
