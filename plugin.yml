@@ -3,3 +3,8 @@ main: NoobMCBG\RandomNumber\RandomNumber
 api: 4.0.0
 version: 2.0.0
 author: NoobMCBG
+
+permissions:
+  random.number:
+    description: Permission use commands /randomnumber
+    default: true
