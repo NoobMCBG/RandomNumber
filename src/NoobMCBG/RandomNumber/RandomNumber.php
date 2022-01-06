@@ -37,10 +37,10 @@ class RandomNumber extends PluginBase implements Listener {
         return self::$instance;
     }
 
-	public function onEnable() : void {
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		$this->saveDefaultConfig();
-		$this->getServer()->getCommandMap()->register("RandomNumber", new RandomNumberCommands($this));
+    public function onEnable() : void {
+	$this->getServer()->getPluginManager()->registerEvents($this, $this);
+	$this->saveDefaultConfig();
+	$this->getServer()->getCommandMap()->register("RandomNumber", new RandomNumberCommands($this));
         self::$instance = $this;
-	}
+    }
 }
