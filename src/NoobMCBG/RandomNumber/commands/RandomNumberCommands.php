@@ -42,16 +42,16 @@ class RandomNumberCommands extends Command implements PluginOwned {
     }
 
     public function execute(CommandSender $sender, string $label, array $args){
-    	if($this->plugin->getConfig()->get("mode") == "form"){
-    		if(!$sender instanceof Player){
+        if($this->plugin->getConfig()->get("mode") == "form"){
+            if(!$sender instanceof Player){
                 $sender->sendMessage("Please use form mode in-game");
                 return true;
-    		}
+            }
             Forms::RandomMenu($sender);
-    	}else{
-    		if(isset($args[0])){
-    	        if(isset($args[1])){
-    	        	if(!is_numeric($args[0])){
+        }else{
+            if(isset($args[0])){
+                if(isset($args[1])){
+                    if(!is_numeric($args[0])){
                         $sender->sendMessage("§cPlease enter the number");
                         return true;
                     }
@@ -59,19 +59,20 @@ class RandomNumberCommands extends Command implements PluginOwned {
                         $sender->sendMessage("§cPlease enter the number");
                         return true;
                     }
-                    if($args[1] <= $args[0]){
-                        $sender->sendMessage("§cThe max number cannot be less than $args[0] or equal to $args[0]");
+                    if($args[1] > $args[0]){
+                        $min = (int)$args[0];
+                        $max = (int)$args[1];
+                        $sender->sendMessage(str_replace(["{line}", "{player}", "{number}"], ["\n", $sender->getName(), mt_rand($min, $max)], strval($this->plugin->getConfig()->get("msg-generate"))));
+                    }else{
+                        $sender->sendMessage("§cThe max number cannot be less than $args[0]");
                     }
-    	    	    $min = (int)$args[0];
-                    $max = (int)$args[1];
-                    $sender->sendMessage(str_replace(["{line}", "{player}", "{number}"], ["\n", $sender->getName(), mt_rand($min, $max)], strval($this->plugin->getConfig()->get("msg-generate"))));
                 }else{
-                	$sender->sendMessage("§cUsage: §7/randomnumber <min> <max>");
+                    $sender->sendMessage("§cUsage: §7/randomnumber <min> <max>");
                 }
-    	    }else{
-    	       $sender->sendMessage("§cUsage: §7/randomnumber <min> <max>");
-    	    }
-    	}
+            }else{
+               $sender->sendMessage("§cUsage: §7/randomnumber <min> <max>");
+            }
+        }
     }
     
     public function getOwningPlugin() : RandomNumber {
