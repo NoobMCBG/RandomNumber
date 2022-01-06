@@ -38,6 +38,7 @@ class RandomNumberCommands extends Command implements PluginOwned {
     public function __construct(RandomNumber $plugin) {
         $this->plugin = $plugin;
         parent::__construct("randomnumber", "Generate a random number", null, ["rb"]);
+        $this->setPermission("random.number");
     }
 
     public function execute(CommandSender $sender, string $label, array $args){
