@@ -42,9 +42,13 @@ class Forms {
                 $player->sendMessage("Please enter the number in the input max");
                 return true;
             }
-            $min = (int)$data[1];
-            $max = (int)$data[2];
-            $player->sendMessage(str_replace(["{line}", "{player}", "{number}"], ["\n", $player->getName(), mt_rand($min, $max)], strval(RandomNumber::getInstance()->getConfig()->get("msg-generate"))));
+            if($data[2] > $data[1]){
+                $min = (int)$data[1];
+                $max = (int)$data[2];
+                $player->sendMessage(str_replace(["{line}", "{player}", "{number}"], ["\n", $player->getName(), mt_rand($min, $max)], strval(RandomNumber::getInstance()->getConfig()->get("msg-generate"))));
+            }else{
+                $player->sendMessage("§cThe max number cannot be less than $args[0]");
+            }
         });
         $form->setTitle("RandomNumber");
         $form->addLabel("Input The Number:");
