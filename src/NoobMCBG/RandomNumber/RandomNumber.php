@@ -31,16 +31,21 @@ use NoobMCBG\RandomNumber\commands\RandomNumberCommands;
 class RandomNumber extends PluginBase implements Listener {
     
     /* @var RandomNumber */
-    public static $instance;
+    public static RandomNumber $instance;
 
     public static function getInstance() : self {
         return self::$instance;
     }
 
     public function onEnable() : void {
-	$this->getServer()->getPluginManager()->registerEvents($this, $this);
-	$this->saveDefaultConfig();
-	$this->getServer()->getCommandMap()->register("RandomNumber", new RandomNumberCommands($this));
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->saveDefaultConfig();
+        $this->getServer()->getCommandMap()->register("RandomNumber", new RandomNumberCommands($this));
+        $this->checkUpdate();
         self::$instance = $this;
+    }
+
+    public function checkUpdate(bool $isRetry = false) : void {
+        $this->getServer()->getAsyncPool()->submitTask(new CheckUpdateTask($this->getDescription()->getName(), $this->getDescription()->getVersion()));
     }
 }

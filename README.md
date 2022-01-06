@@ -1,5 +1,5 @@
 <div align="center">
-<h1>RandomNumber v1.0.0<h1>
+<h1>RandomNumber v2.0.0<h1>
 <p>Generate a Random number</p>
 </div>
   
